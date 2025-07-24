@@ -1,0 +1,6 @@
+{
+  "extName": { "message": "Go To My GitHub Profile" },
+  "extDesc": { "message": "When you access github.com, automatically go to your profile (On/Off toggle, status tooltip, default ON)" },
+  "profileOn": { "message": "Go To My Profile (ON)\nStatus: ON\nClick to toggle" },
+  "profileOff": { "message": "Go To My Profile (OFF)\nStatus: OFF\nClick to toggle" }
+} 

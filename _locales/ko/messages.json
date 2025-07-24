@@ -1,0 +1,6 @@
+{
+  "extName": { "message": "Go to My GitHub Profile" },
+  "extDesc": { "message": "github.com 접속 시 자동으로 내 프로필로 이동 (On/Off 토글, 상태 툴팁, 기본 ON)" },
+  "profileOn": { "message": "Go To My Profile (ON)\n상태: 켜짐\n클릭 시 토글" },
+  "profileOff": { "message": "Go To My Profile (OFF)\n상태: 꺼짐\n클릭 시 토글" }
+} 
