@@ -1,4 +1,3 @@
-// 탭 전환 및 리다이렉트 탭 설정
 const tabs = document.querySelectorAll('.gh-tab');
 const contents = document.querySelectorAll('.tab-content > div');
 tabs.forEach(tab => {
@@ -8,12 +7,10 @@ tabs.forEach(tab => {
     contents.forEach(c => c.style.display = 'none');
     const show = document.querySelector(`[data-content="${tab.dataset.tab}"]`);
     if (show) show.style.display = '';
-    // 선택한 탭을 저장 (redirect용)
     chrome.storage.sync.set({ gotomyprofile_tab: tab.dataset.tab });
   });
 });
 
-// 팝업이 열릴 때 마지막 선택 탭을 active로
 chrome.storage.sync.get(['gotomyprofile_tab'], (result) => {
   const tabKey = result.gotomyprofile_tab || 'overview';
   const tab = document.querySelector(`.gh-tab[data-tab="${tabKey}"]`);
@@ -26,7 +23,6 @@ chrome.storage.sync.get(['gotomyprofile_tab'], (result) => {
   }
 });
 
-// 다국어 메시지 동적 적용
 function setI18nText() {
   const tabMap = [
     { selector: '[data-content="overview"]', key: 'tabOverviewDesc' },
@@ -42,7 +38,6 @@ function setI18nText() {
 }
 setI18nText();
 
-// 사용자 정보 표시(기존 코드 유지)
 function renderUserInfo(user) {
   const userInfo = document.getElementById('userInfo');
   if (!userInfo) return;
@@ -77,7 +72,6 @@ chrome.runtime.sendMessage({ type: 'getGithubUserInfo' }, (user) => {
   renderUserInfo(user);
 });
 
-// ON/OFF 상태 관리 (toggle 변수 없이)
 let isOn = true;
 
 function updateUI() {
@@ -98,7 +92,6 @@ function updateUI() {
       onoffBtn.classList.add('off');
     }
     if (offMessage) { offMessage.style.opacity = 0; offMessage.style.pointerEvents = 'none'; offMessage.style.display = 'none'; }
-    // 항상 최신 userInfo 표시
     chrome.runtime.sendMessage({ type: 'getGithubUserInfo' }, renderUserInfo);
   } else {
     if (body) body.classList.add('off-mode');
@@ -119,7 +112,6 @@ function updateUI() {
   }
 }
 
-// 초기 상태 불러오기
 chrome.storage.sync.get(['gotomyprofile_on'], (result) => {
   isOn = result.gotomyprofile_on !== false;
   updateUI();
