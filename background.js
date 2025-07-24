@@ -36,4 +36,24 @@ chrome.runtime.onInstalled.addListener(() => {
   chrome.storage.sync.set({ gotomyprofile_on: true }, () => {
     updateIconAndTitle(true);
   });
+});
+
+let githubUserInfo = null;
+
+// content.js에서 사용자 정보 수신
+chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
+  if (msg && msg.type === 'githubUserInfo') {
+    githubUserInfo = {
+      username: msg.username,
+      avatarUrl: msg.avatarUrl
+    };
+  }
+  // 기존 메시지 처리
+  if (msg && msg.type === 'updateIcon') {
+    updateIconAndTitle(msg.isOn);
+  }
+  // popup에서 사용자 정보 요청 시 응답
+  if (msg && msg.type === 'getGithubUserInfo') {
+    sendResponse(githubUserInfo);
+  }
 }); 

@@ -10,7 +10,8 @@
       "48": "icons/on/icon48.png",
       "128": "icons/on/icon128.png"
     },
-    "default_title": "__MSG_profileOn__"
+    "default_title": "__MSG_profileOn__",
+    "default_popup": "popup.html"
   },
   "background": {
     "service_worker": "background.js"

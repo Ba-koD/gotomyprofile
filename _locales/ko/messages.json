@@ -2,5 +2,11 @@
   "extName": { "message": "Go to My GitHub Profile" },
   "extDesc": { "message": "github.com 접속 시 자동으로 내 프로필로 이동 (On/Off 토글, 상태 툴팁, 기본 ON)" },
   "profileOn": { "message": "Go To My Profile (ON)\n상태: 켜짐\n클릭 시 토글" },
-  "profileOff": { "message": "Go To My Profile (OFF)\n상태: 꺼짐\n클릭 시 토글" }
-} 
+  "profileOff": { "message": "Go To My Profile (OFF)\n상태: 꺼짐\n클릭 시 토글" },
+  "offMessage": { "message": "기능이 비활성화되어 있습니다. on을 눌러 활성화하세요." },
+  "tabOverviewDesc": { "message": "기본 탭을 Overview로 설정합니다." },
+  "tabRepositoriesDesc": { "message": "기본 탭을 Repositories로 설정합니다." },
+  "tabProjectsDesc": { "message": "기본 탭을 Projects로 설정합니다." },
+  "tabPackagesDesc": { "message": "기본 탭을 Packages로 설정합니다." },
+  "tabStarsDesc": { "message": "기본 탭을 Stars로 설정합니다." }
+}
