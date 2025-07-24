@@ -51,17 +51,15 @@ function renderUserInfo(user) {
       const img = document.createElement('img');
       img.src = user.avatarUrl;
       img.alt = 'avatar';
-      img.style.width = '28px';
-      img.style.height = '28px';
-      img.style.borderRadius = '50%';
+      img.className = 'profile-avatar';
       userInfo.appendChild(img);
     }
     const span = document.createElement('span');
     span.textContent = user.username;
-    span.style.fontWeight = 'bold';
-    span.style.marginLeft = '6px';
-    span.style.fontSize = '1em';
+    span.className = 'profile-username';
     userInfo.appendChild(span);
+    const starsTab = document.querySelector('.gh-tab[data-tab="stars"]');
+    if (starsTab) starsTab.style.marginRight = '24px';
   } else {
     userInfo.innerHTML = '';
     userInfo.style.display = '';

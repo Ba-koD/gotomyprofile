@@ -50,6 +50,8 @@ body.off-mode .main-content-wrapper {
   min-width: 0;
   flex: 1 1 auto;
   width: auto;
+  gap: 16px;
+  justify-content: flex-end;
 }
 .gh-tab {
   background: none;
@@ -101,7 +103,7 @@ body.off-mode .main-content-wrapper {
 .user-info {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 4px;
   min-width: 0;
   flex-grow: 1;
   width: auto;
@@ -175,4 +177,16 @@ html, body {
   width: auto !important;
   flex-grow: 1;
   flex-shrink: 1;
+} 
+.profile-avatar {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  margin-right: 0;
+}
+.profile-username {
+  font-weight: bold;
+  font-size: 1em;
+  white-space: nowrap;
+  margin-right: 16px;
 } 

@@ -1,14 +1,21 @@
 chrome.storage.sync.get(['gotomyprofile_on', 'gotomyprofile_tab'], (result) => {
   if (result.gotomyprofile_on === false) return;
-  if (location.pathname !== "/") return;
-  const meta = document.querySelector('meta[name="user-login"]');
-  if (meta && meta.content) {
-    const username = meta.content;
-    let avatarUrl = null;
-    const avatarImg = document.querySelector('img.avatar-user');
-    if (avatarImg) {
-      avatarUrl = avatarImg.src;
-    }
+
+  // AppHeader-user에서 avatar와 username만 추출
+  let avatarUrl = null;
+  let username = null;
+
+  const avatarImg = document.querySelector('.AppHeader-user img.avatar');
+  if (avatarImg) {
+    avatarUrl = avatarImg.src;
+  }
+
+  const userBtn = document.querySelector('.AppHeader-user button[data-login]');
+  if (userBtn) {
+    username = userBtn.getAttribute('data-login');
+  }
+
+  if (username) {
     chrome.runtime.sendMessage({
       type: 'githubUserInfo',
       username,
