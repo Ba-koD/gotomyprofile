@@ -1,3 +1,5 @@
+#[Chrome Webstore link](https://chromewebstore.google.com/detail/ljaibjekimndfdjbkjkhmejionflondm)
+
 # Go To My GitHub Profile Extension
 
 ## Privacy Policy (EN)
