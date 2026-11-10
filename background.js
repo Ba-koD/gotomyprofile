@@ -26,17 +26,16 @@ chrome.action.onClicked.addListener((tab) => {
   });
 });
 
-chrome.runtime.onStartup.addListener(() => {
+// A missing value means ON (the default), so nothing is written here. onInstalled also
+// fires on extension/Chrome updates, and writing would reset a user's OFF choice.
+function syncIconWithStorage() {
   chrome.storage.sync.get(['gotomyprofile_on'], (result) => {
     updateIconAndTitle(result.gotomyprofile_on !== false);
   });
-});
+}
 
-chrome.runtime.onInstalled.addListener(() => {
-  chrome.storage.sync.set({ gotomyprofile_on: true }, () => {
-    updateIconAndTitle(true);
-  });
-});
+chrome.runtime.onStartup.addListener(syncIconWithStorage);
+chrome.runtime.onInstalled.addListener(syncIconWithStorage);
 
 chrome.runtime.onMessage.addListener((msg) => {
   if (msg && msg.type === 'updateIcon') {
