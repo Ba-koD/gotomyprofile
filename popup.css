@@ -38,7 +38,7 @@ body.off-mode .main-content-wrapper {
 .gh-tabs {
   display: flex;
   gap: 8px;
-  padding: 0 0 0 12px;
+  padding: 0 24px 0 12px;
   flex: 1 1 auto;
   min-width: 0;
   width: auto;
@@ -100,14 +100,15 @@ body.off-mode .main-content-wrapper {
   border: 2px solid #30363d;
   box-sizing: border-box;
 }
+/* Fixed-width slot so the popup doesn't resize when the profile loads or hides. */
 .user-info {
   display: flex;
   align-items: center;
-  gap: 4px;
-  min-width: 0;
-  flex-grow: 1;
-  width: auto;
-  overflow: visible;
+  justify-content: flex-end;
+  gap: 8px;
+  flex: none;
+  width: 160px;
+  overflow: hidden;
 }
 .user-info span {
   color: #c9d1d9;
@@ -116,6 +117,9 @@ body.off-mode .main-content-wrapper {
   margin-left: 6px;
   margin-right: 16px;
   white-space: nowrap;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 .switch .toggle-text {
   color: #f78166;
@@ -137,6 +141,16 @@ body.off-mode .main-content-wrapper {
   text-transform: uppercase;
   align-self: center;
   margin-left: 8px;
+  display: inline-grid;
+  justify-items: center;
+}
+/* Both labels share one grid cell, so ON and OFF take the same width. */
+.onoff-label {
+  grid-area: 1 / 1;
+}
+.onoff-btn.off .onoff-label-on,
+.onoff-btn.on .onoff-label-off {
+  visibility: hidden;
 }
 .onoff-btn.off {
   color: #e5534b;
@@ -171,7 +185,7 @@ html, body {
   max-width: none !important;
   width: auto !important;
 }
-.popup-header, .main-content-wrapper, .header-right, .user-info {
+.popup-header, .main-content-wrapper, .header-right {
   min-width: 0 !important;
   max-width: none !important;
   width: auto !important;
@@ -183,6 +197,26 @@ html, body {
   height: 28px;
   border-radius: 50%;
   margin-right: 0;
+  flex: none;
+  background: #30363d;
+}
+/* OFF mode hides content with visibility so the layout (and popup size) stays the same. */
+body.off-mode .gh-tabs,
+body.off-mode .tab-content,
+body.off-mode .user-info {
+  visibility: hidden;
+}
+body.off-mode .off-message {
+  display: flex;
+}
+/* Hidden until popup.js has applied the saved state; no transitions while it does. */
+body.loading .gh-tabs,
+body.loading .header-right,
+body.loading .main-content-wrapper {
+  visibility: hidden;
+}
+body.loading * {
+  transition: none !important;
 }
 .profile-username {
   font-weight: bold;

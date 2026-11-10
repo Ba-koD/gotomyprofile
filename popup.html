@@ -5,7 +5,7 @@
   <title>Go To My GitHub Profile</title>
   <link rel="stylesheet" href="popup.css">
 </head>
-<body>
+<body class="loading">
   <div class="popup-header">
     <nav class="gh-tabs">
       <button class="gh-tab active" data-tab="overview">
@@ -41,18 +41,21 @@
     </nav>
     <div class="header-right">
       <div class="user-info" id="userInfo"></div>
-      <button id="onoffBtn" class="onoff-btn"></button>
+      <button id="onoffBtn" class="onoff-btn off">
+        <span class="onoff-label onoff-label-off">OFF</span>
+        <span class="onoff-label onoff-label-on">ON</span>
+      </button>
     </div>
   </div>
   <div class="main-content-wrapper">
     <div class="tab-content" id="tabContent">
-      <div data-content="overview">__MSG_tabOverviewDesc__</div>
-      <div data-content="repositories" style="display:none;">__MSG_tabRepositoriesDesc__</div>
-      <div data-content="projects" style="display:none;">__MSG_tabProjectsDesc__</div>
-      <div data-content="packages" style="display:none;">__MSG_tabPackagesDesc__</div>
-      <div data-content="stars" style="display:none;">__MSG_tabStarsDesc__</div>
+      <div data-content="overview" data-i18n="tabOverviewDesc"></div>
+      <div data-content="repositories" data-i18n="tabRepositoriesDesc" hidden></div>
+      <div data-content="projects" data-i18n="tabProjectsDesc" hidden></div>
+      <div data-content="packages" data-i18n="tabPackagesDesc" hidden></div>
+      <div data-content="stars" data-i18n="tabStarsDesc" hidden></div>
     </div>
-    <div id="offMessage" class="off-message" style="display:none;">__MSG_offMessage__</div>
+    <div id="offMessage" class="off-message" data-i18n="offMessage"></div>
   </div>
   <script src="popup.js"></script>
 </body>
