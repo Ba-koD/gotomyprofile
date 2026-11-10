@@ -38,19 +38,8 @@ chrome.runtime.onInstalled.addListener(() => {
   });
 });
 
-let githubUserInfo = null;
-
-chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
-  if (msg && msg.type === 'githubUserInfo') {
-    githubUserInfo = {
-      username: msg.username,
-      avatarUrl: msg.avatarUrl
-    };
-  }
+chrome.runtime.onMessage.addListener((msg) => {
   if (msg && msg.type === 'updateIcon') {
     updateIconAndTitle(msg.isOn);
-  }
-  if (msg && msg.type === 'getGithubUserInfo') {
-    sendResponse(githubUserInfo);
   }
 }); 

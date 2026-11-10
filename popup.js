@@ -56,12 +56,12 @@ onoffBtn.addEventListener('click', () => {
 // so the popup never shows (or resizes for) intermediate states.
 Promise.all([
   chrome.storage.sync.get(['gotomyprofile_on', 'gotomyprofile_tab']),
-  chrome.runtime.sendMessage({ type: 'getGithubUserInfo' }).catch(() => null)
-]).then(([settings, user]) => {
+  chrome.storage.local.get('gotomyprofile_user')
+]).then(([settings, local]) => {
   isOn = settings.gotomyprofile_on !== false;
   selectTab(settings.gotomyprofile_tab || 'overview');
   applyOnOff();
-  renderUserInfo(user);
+  renderUserInfo(local.gotomyprofile_user);
 }).finally(() => {
   // Commit the final styles before transitions are re-enabled, so nothing animates on open.
   void body.offsetWidth;

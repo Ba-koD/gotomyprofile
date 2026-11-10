@@ -10,10 +10,9 @@ chrome.storage.sync.get(['gotomyprofile_on', 'gotomyprofile_tab'], (result) => {
       const avatarUrl = avatarImg ? avatarImg.src : null;
 
       if (username) {
-        chrome.runtime.sendMessage({
-          type: 'githubUserInfo',
-          username,
-          avatarUrl
+        // Persist in storage (not service-worker memory, which Chrome clears when the worker idles out).
+        chrome.storage.local.set({
+          gotomyprofile_user: { username, avatarUrl }
         });
         let url = `/${username}`;
         if (result.gotomyprofile_tab && result.gotomyprofile_tab !== 'overview') {
